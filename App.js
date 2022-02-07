@@ -18,6 +18,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { Provider } from "./context/Provider";
 import TaskList from "./screen/TaskList";
+import { Navigator } from "./screen/Navigator";
+import Loading from "./screen/Loading";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -25,12 +27,12 @@ export default function App() {
   });
 
   if (!fontsLoaded) {
-    return <AppLoading />;
+    return <Loading />;
   }
 
-  const Stack = createNativeStackNavigator();
 
   return (
+
     // <>
     //    {/* <Home/> */}
     //    {/* <Scroll/> */}
@@ -40,20 +42,7 @@ export default function App() {
     // </>
 
     <Provider>
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            headerShown: false,
-          }}
-        >
-          <Stack.Screen
-            name="Home"
-            component={Task}
-            // options={{ title: 'Welcome' }}
-          />
-          <Stack.Screen name="AddTask" component={AddTask} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <Navigator />
     </Provider>
   );
 }
