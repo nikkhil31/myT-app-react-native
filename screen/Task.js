@@ -4,7 +4,6 @@ import {
   Text,
   TouchableOpacity,
   View,
-  FlatList,
 } from "react-native";
 import React, { useRef } from "react";
 import { useProvider } from "../context/Provider";
@@ -43,7 +42,6 @@ const Task = ({ navigation }) => {
   };
 
   const todaysTask = (task) => {
-    // console.log( task.createdAt.split(' ')[0] === format(new Date(),'dd/MM/yyyy'));
     return (
       task.createdAt.split(" ")[0] === format(new Date(), "dd/MM/yyyy") ||
       !task.isCompleted
@@ -156,14 +154,9 @@ const Task = ({ navigation }) => {
     <View style={{ flex: 1 }}>
       <Animated.View
         style={{
-          // height: 20,
-          // flex: 1,
           backgroundColor: "#f3db54",
           height: headerHeight,
-          // alignItems:center,
           justifyContent: "center",
-          // width: headerHeight,
-          // borderRadius:headerHeight
         }}
       >
         <Animated.Text
